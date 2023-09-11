@@ -52,6 +52,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Activity } from '../types/Activity';
 import { User } from '../types/User';
+import "../stylesheet/components/_BookingButton.scss"
 
 interface BookingButtonProps {
   activity: Activity;
