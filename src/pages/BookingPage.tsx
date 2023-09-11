@@ -10,6 +10,7 @@ interface BookinPageProps{
   activities: Activity[];
   upDateUserActivities:(activity: Activity) => void;
   loggedInUser:User
+  upDateActivityMaxCount:(activityId: number) => void;
 }
 function BookingPage(props:BookinPageProps): JSX.Element {
   //const [activities, setActivities] = useState<Activity[]>([]);
@@ -29,7 +30,7 @@ function BookingPage(props:BookinPageProps): JSX.Element {
          
             <p>Max Count: {activity.maxCount}</p>
             {/* Pass the activity as a prop to BookingButton */}
-            <BookingButton activities={props.activities} loggedInUser={loggedInUser} updateUserActivities={props.upDateUserActivities} activity={activity} />
+            <BookingButton upDateActivityMaxCount={props.upDateActivityMaxCount} activities={props.activities} loggedInUser={loggedInUser} updateUserActivities={props.upDateUserActivities} activity={activity} />
           </li>
         ))}
       </ul>
