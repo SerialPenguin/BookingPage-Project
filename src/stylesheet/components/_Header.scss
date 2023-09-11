@@ -1,0 +1,24 @@
+.header-wrapper {
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 1rem;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+font-family: 'Racing Sans One', cursive;
+}
+
+header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px; /* Lägg till marginal till höger om bilden */
+}
+
+header h1 {
+  font-size: 2.3rem;
+  margin: 0;
+}

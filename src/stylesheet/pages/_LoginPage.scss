@@ -1,0 +1,51 @@
+/* LoginForm.css */
+.login-form-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Sätt en maxbredd för att kontrollera bredden */
+    width: 100%; /* Ta upp hela tillgänglig bredd */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  input {
+    //width: 100%; /* Ta upp hela bredden av sitt förälderelement */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    width: 100%; /* Ta upp hela bredden av sitt förälderelement */
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  h2{
+    font-size: 24px;
+    font-style: italic;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-left: 5px solid #333;
+    margin: 20px;
+  }
+ 
