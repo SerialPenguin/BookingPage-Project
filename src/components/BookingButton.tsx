@@ -58,9 +58,10 @@ interface BookingButtonProps {
   updateUserActivities: (activity: Activity) => void;
   loggedInUser: User;
   activities:Activity[];
+  upDateActivityMaxCount:(activityId: number) => void;
 }
 
-function BookingButton({ activity, updateUserActivities, loggedInUser, activities }: BookingButtonProps) {
+function BookingButton({ activity, updateUserActivities, loggedInUser, activities, upDateActivityMaxCount }: BookingButtonProps) {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   function showBookingConfirmation() {
@@ -94,6 +95,7 @@ function BookingButton({ activity, updateUserActivities, loggedInUser, activitie
           maxCount: activity.maxCount -1,
         };
         // After a successful booking, update the user's activities
+        upDateActivityMaxCount(activity.id)
         updateUserActivities(newActivity);
         showBookingConfirmation();
         

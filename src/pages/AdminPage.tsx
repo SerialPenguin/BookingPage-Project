@@ -8,6 +8,7 @@ interface AdminPageProps {
   activities: Activity[];
   upDateUserActivities:(activity: Activity) => void;
   loggedInUser:User
+  upDateActivityMaxCount:(activityId: number) => void;
 }
 
 function AdminPage(props: AdminPageProps): JSX.Element {
@@ -17,7 +18,7 @@ function AdminPage(props: AdminPageProps): JSX.Element {
       <Link to="/add">Add new Activity</Link>
       <p></p>
       <Link to="/view">View Users</Link>
-      <BookingPage loggedInUser={props.loggedInUser} upDateUserActivities={props.upDateUserActivities} activities={props.activities} />
+      <BookingPage upDateActivityMaxCount={props.upDateActivityMaxCount} loggedInUser={props.loggedInUser} upDateUserActivities={props.upDateUserActivities} activities={props.activities} />
     </>
   );
 }
