@@ -27,7 +27,19 @@ function App() {
       });
   }, []);
   
-
+  // Funktion för att uppdatera maxCount för en aktivitet
+  function updateActivityMaxCount(activityId: number) {
+    const updatedActivities = activities.map((activity) => {
+      if (activity.id === activityId) {
+        return {
+          ...activity,
+          maxCount: activity.maxCount - 1,
+        };
+      }
+      return activity;
+    });
+    setActivities(updatedActivities);
+  }
 
   useEffect(() => {
     // Hämta aktivitetsdata från MirageJS
@@ -133,7 +145,7 @@ function convertUser(id:number,username:string,role:UserRole, activities:Activit
               <>
                 {isLoggedIn && <PageBanner handleRemoveActivity={handleRemoveActivity} {...loggedInUser} />}
                
-                  <BookingPage loggedInUser={loggedInUser} upDateUserActivities={updateUserActivities} activities={activities}/> 
+                  <BookingPage upDateActivityMaxCount={updateActivityMaxCount} loggedInUser={loggedInUser} upDateUserActivities={updateUserActivities} activities={activities}/> 
                 
               </>
             }
@@ -144,7 +156,7 @@ function convertUser(id:number,username:string,role:UserRole, activities:Activit
               <>
                 {isLoggedIn && <PageBanner handleRemoveActivity={handleRemoveActivity} {...loggedInUser} />}
                
-                  <AdminPage loggedInUser={loggedInUser} upDateUserActivities={updateUserActivities} activities={activities}/> 
+                  <AdminPage upDateActivityMaxCount={updateActivityMaxCount} loggedInUser={loggedInUser} upDateUserActivities={updateUserActivities} activities={activities}/> 
                 
               </>
             }
