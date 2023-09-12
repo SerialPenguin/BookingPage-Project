@@ -61,14 +61,12 @@ function BookingButton({ activity, updateUserActivities, loggedInUser, upDateAct
       {bookingConfirmed && (
         <div className="booking-confirmation">
           <p>Your booking has been confirmed!</p>
-          <button onClick={hideBookingConfirmation}>Close</button>
+          <button onClick={hideBookingConfirmation} className='booking-btn'>Close</button>
         </div>
       )}
-      <button onClick={handleBookActivity}>Book Activity</button>
+      <button onClick={handleBookActivity} className='login-btn'>Book Activity</button>
     </div>
   );
 }
 
 export default BookingButton;
-
-

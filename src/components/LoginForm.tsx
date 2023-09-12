@@ -69,7 +69,7 @@ function LoginForm(props: LoginFormProps): JSX.Element {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Log in!</button>
+      <button type="submit" className="login-btn">Log in!</button>
     </form>
     
     </div>

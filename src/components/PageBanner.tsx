@@ -15,7 +15,7 @@ interface PageBannerProps{
 export default function PageBanner(props:PageBannerProps):JSX.Element{
     return(
         <>
-        <h2>Pagebanner</h2>
+        <h2>User options</h2>
         <p>Logged in as: {props.username}</p>
         <p>Your Role is: {props.role}</p>
         <p>Your booked activities:  </p>
@@ -28,9 +28,7 @@ export default function PageBanner(props:PageBannerProps):JSX.Element{
                         
                         <p>{activity.maxCount}</p>
                          <p>{activity.date.toLocaleString()}</p>
-                         <button onClick={() => props.handleRemoveActivity(activity.id)}>Cancel Activity</button>
-                        
-
+                         <button onClick={() => props.handleRemoveActivity(activity.id)} className="login-btn">Cancel Activity</button>
                     </li>
                 })}
             </ul>

@@ -1,0 +1,25 @@
+.activity-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.activity-form-wrapper label {
+    width: 100%;
+}
+
+.activity-form-wrapper input,
+.activity-form-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.activity-form-wrapper button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    min-width: unset;
+    margin-top: 1.5em;
+}
