@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 import { Activity } from '../types/Activity';
+import "../stylesheet/components/_AddActivityForm.scss"
 
 interface AddActivityFormProps { // Interface for the new activityprops when adding a new activity
   activities:Activity[]
@@ -38,6 +39,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
   
 
   return (
+    <div className='activity-form-wrapper'>
     <form onSubmit={handleSubmit}>
       <label>
         Title:
@@ -72,6 +74,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
       </label>
       <button type="submit">Add Activity</button>
     </form>
+    </div>
   );
 }
 
