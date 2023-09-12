@@ -58,7 +58,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
         Date:
         <input
           type="text"
-          value={date.toLocaleDateString()} // Code has only accepted tolocalstring
+          value={date.toLocaleDateString()}
           onChange={(e) => setDate(new Date(e.target.value))}
         />
       </label>

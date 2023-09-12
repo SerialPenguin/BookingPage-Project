@@ -1,7 +1,3 @@
-
-
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Activity } from '../types/Activity';
 import BookingButton from '../components/BookingButton';
 import { User } from '../types/User';
@@ -12,10 +8,11 @@ interface BookinPageProps{
   loggedInUser:User
   upDateActivityMaxCount:(activityId: number) => void;
 }
+
+// Renders the state activities from App
+
 function BookingPage(props:BookinPageProps): JSX.Element {
-  //const [activities, setActivities] = useState<Activity[]>([]);
-  const { activities, upDateUserActivities, loggedInUser} = props;
-  const [filteredActivities, setFilteredActivities] = useState<Activity[]>([]);
+  const { activities,  upDateUserActivities,  loggedInUser, upDateActivityMaxCount} = props;
   
   return (
     <div>
@@ -30,7 +27,7 @@ function BookingPage(props:BookinPageProps): JSX.Element {
          
             <p>Max Count: {activity.maxCount}</p>
             {/* Pass the activity as a prop to BookingButton */}
-            <BookingButton upDateActivityMaxCount={props.upDateActivityMaxCount} activities={props.activities} loggedInUser={loggedInUser} updateUserActivities={props.upDateUserActivities} activity={activity} />
+            <BookingButton upDateActivityMaxCount={upDateActivityMaxCount} loggedInUser={loggedInUser} updateUserActivities={upDateUserActivities} activity={activity} />
           </li>
         ))}
       </ul>
