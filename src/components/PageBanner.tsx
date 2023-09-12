@@ -1,5 +1,6 @@
 import { UserRole } from "../types/User";
 import { Activity } from "../types/Activity";
+import LogOutBtn from "./LogOutBtn";
 
 interface PageBannerProps{
     username:string;
@@ -15,6 +16,7 @@ interface PageBannerProps{
 export default function PageBanner(props:PageBannerProps):JSX.Element{
     return(
         <>
+        <LogOutBtn/>
         <h2>User options</h2>
         <p>Logged in as: {props.username}</p>
         <p>Your Role is: {props.role}</p>
