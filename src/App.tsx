@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/LoginPage';
@@ -11,23 +11,23 @@ import { UserRole } from './types/User';
 import AddActivityPage from './pages/AddActivityPage';
 import { User } from './types/User';
 import ViewUsers from './pages/ViewUsers';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({ id:0, username: '', role: 'USER' as UserRole, activities: [] as Activity[], password: '' });
   const [activities, setActivities] = useState([] as Activity[]);
   const [users, setUsers]= useState([] as User[])
 
-
+// Fetch the users from MirageJS
   useEffect(() => {
     fetch('/users')
       .then((response) => response.json())
       .then((data) => {
         setUsers(data.map((user:User)=> convertUser(user.id, user.username, user.role, user.activities, user.password)));
-        console.log(data); // Här loggar du den hämtade användardata
       });
   }, []);
   
-  // Funktion för att uppdatera maxCount för en aktivitet
+  // Function to update the max count for activities
   function updateActivityMaxCount(activityId: number) {
     const updatedActivities = activities.map((activity) => {
       if (activity.id === activityId) {
@@ -42,17 +42,17 @@ function App() {
   }
 
   useEffect(() => {
-    // Hämta aktivitetsdata från MirageJS
-    fetch('/activities') // Använd rätt endpoint här
+    // Fetch activity data from MirageJS
+    fetch('/activities')
       .then((response) => response.json())
-      .then((data) => setActivities(data)); // Uppdatera aktivitetsstaten med data från Mirage
+      .then((data) => setActivities(data));
       
   }, []);
 
  
 
   function onAddActivity(id: number, title: string, content: string, date: Date, maxCount: number) {
-    // Skapa en ny aktivitet med de givna parametrarna
+    // Create the new activity with the given parameters
     const newActivity: Activity = {
       id,
       title,
@@ -61,28 +61,25 @@ function App() {
       maxCount,
     };
   
-    // Skapa en kopia av den befintliga activities-arrayen och lägg till den nya aktiviteten
+    // Create a copy of the current activities-array and adds the new activity
     const updatedActivities = [...activities, newActivity];
   
-    // Uppdatera activities-arrayen med den nya arrayen
+    // Updates the activities array with the new array
     setActivities(updatedActivities);
   }
 
+  // Fetches the stored users data from local storage
   useEffect(() => {
-    let hasFetchedUserData = false; // A flag to track whether user data has been fetched
-    
-    if (!hasFetchedUserData) {
-      const storedUserData = localStorage.getItem("loggedInUser");
-      if (storedUserData) {
-        const user = JSON.parse(storedUserData);
-        console.log(user);
-        const newUser: User = convertUser(user.id, user.username, user.role, user.activities, user.password);
-        setIsLoggedIn(true);
-        setLoggedInUser(newUser);
-      }
-      hasFetchedUserData = true; // Set the flag to true after the initial fetch
+    const storedUserData = localStorage.getItem("loggedInUser");
+    if (storedUserData) {
+      const user = JSON.parse(storedUserData);
+      const newUser: User = convertUser( user.id,user.username, user.role,user.activities,user.password)
+      setIsLoggedIn(true);
+      setLoggedInUser(newUser);
     }
   }, []);
+
+  // Was needed to convert the response from MirageJS to the set the correct type for date
 function convertUser(id:number,username:string,role:UserRole, activities:Activity[],password:string):User{
   const newUser: User = {
     id:id,
@@ -103,37 +100,35 @@ function convertUser(id:number,username:string,role:UserRole, activities:Activit
   return newUser;
 }
 
+  // Function that sets the logged in state and then saves the data to local storage
   function handleLogin(id:number,username: string, role: UserRole, activities: Activity[], password: string) {
     setIsLoggedIn(true);
-    console.log('in app');
 
     setLoggedInUser(convertUser( id,username, role, activities, password ));
     localStorage.setItem("loggedInUser", JSON.stringify({ username, role, activities }))
   }
 
   function updateUserActivities(activity: Activity) {
-    // Skapa en kopia av användarens aktivitetslista och lägg till den nya aktiviteten
+    // Creates a copy of the users activity list and adds the new activity
     const updatedActivities = [...loggedInUser.activities, activity];
     
-    // Uppdatera loggedInUser med den uppdaterade aktivitetslistan
+    // Updates loggedInUser with the updated activity list
     setLoggedInUser({ ...loggedInUser, activities: updatedActivities });
   }
 
-  //nytt under:
-
-   // Funktion för att ta bort en aktivitet från användarens lista av aktiviteter
+   // Function to remove an activity from the users list of activities
    function handleRemoveActivity(activityId: number) {
-    // Skapa en kopia av användarens aktuella aktivitetslista
+    // Create a copy of the users actual activity list
     const updatedActivities = [...loggedInUser.activities];
 
-    // Hitta indexet för den aktivitet som ska tas bort
+    // Find the index for the activity that's to be removed
     const indexToRemove = updatedActivities.findIndex((activity) => activity.id === activityId);
 
-    // Ta bort aktiviteten om den hittades
+    // Remove the activity if found
     if (indexToRemove !== -1) {
       updatedActivities.splice(indexToRemove, 1);
 
-      // Uppdatera användarens aktivitetslista med den uppdaterade listan
+      // Update the users activity list with the updated list
       setLoggedInUser({ ...loggedInUser, activities: updatedActivities });
     }
   }

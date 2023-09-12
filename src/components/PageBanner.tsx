@@ -1,4 +1,3 @@
-
 import { UserRole } from "../types/User";
 import { Activity } from "../types/Activity";
 
@@ -11,6 +10,8 @@ interface PageBannerProps{
     handleRemoveActivity:(activityId: number) => void;
 
 }
+
+// Maps through users and booked activities and renders it on the page banner using the page banner props as the type declaration
 export default function PageBanner(props:PageBannerProps):JSX.Element{
     return(
         <>
@@ -18,7 +19,6 @@ export default function PageBanner(props:PageBannerProps):JSX.Element{
         <p>Logged in as: {props.username}</p>
         <p>Your Role is: {props.role}</p>
         <p>Your booked activities:  </p>
-            {/*här behövs mer när vi lagt in rätt under activity*/}
             <ul>
                 {props.activities.map((activity) =>{ 
                     

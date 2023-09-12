@@ -1,15 +1,16 @@
-import AddActivityForm from "../components/AddActivityForm";
-import PageBanner from "../components/PageBanner";
 import BookingPage from "./BookingPage";
 import { Activity } from "../types/Activity";
 import { Link } from "react-router-dom";
 import { User } from "../types/User";
+
 interface AdminPageProps {
   activities: Activity[];
   upDateUserActivities:(activity: Activity) => void;
   loggedInUser:User
   upDateActivityMaxCount:(activityId: number) => void;
 }
+
+// Renders and adds functions for the admin page
 
 function AdminPage(props: AdminPageProps): JSX.Element {
   return (

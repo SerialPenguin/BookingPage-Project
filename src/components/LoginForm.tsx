@@ -25,7 +25,7 @@ function LoginForm(props: LoginFormProps): JSX.Element {
     event.preventDefault();
     console.log(username, password);
   
-    // Skicka användardata till din Mirage-backend för att verifiera användaren
+    // Sends userdata to the Mirage-backend to verify the user
     axios
       .post('/login', { username, password })
       .then((response) => {
@@ -33,7 +33,7 @@ function LoginForm(props: LoginFormProps): JSX.Element {
         if (user) {
           console.log('Logged in as:', user.username, user.role,user.activities, user.password);
   
-          // Anropa onLogin-funktionen för att utföra inloggningen
+          // Calls the onLogin-function to process the login and checks if the user is admin or normal user
           props.onLogin(user.id,user.username, user.role, user.activities, user.password);
             if(user.role === "ADMIN"){
                 navigate("/admin")
@@ -55,6 +55,7 @@ function LoginForm(props: LoginFormProps): JSX.Element {
 
   return (
     <div className="login-form-wrapper">
+      {error && <div className="error-message">{error}</div>}
     <form onSubmit={handleSubmit}>
       <input
         type="text"
