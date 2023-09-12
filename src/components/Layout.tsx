@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header"
 
+// Creates an outlet with the type JSX.Element to make the design of the page correct
 function Layout():JSX.Element{
 return(
 <div>

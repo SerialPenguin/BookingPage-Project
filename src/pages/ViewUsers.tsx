@@ -1,14 +1,13 @@
 import Header from "../components/Header";
 import { User } from "../types/User";
-import { UserRole } from "../types/User";
-import { Activity } from "../types/Activity";
+
 interface ViewUsersProps{
-    users:User[]
-    
+    users:User[] 
 }
+
+    // Renders the state users and their data for the logged in admin
+
 function ViewUsers(props:ViewUsersProps):JSX.Element{
-
-
 
 return(
 <>
@@ -23,12 +22,8 @@ return(
         )))}</h5>
     </li>
 ))}
-   
-
 </ul>
-
 </>
-)
-}
+)}
 
 export default ViewUsers;
