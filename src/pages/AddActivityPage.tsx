@@ -15,7 +15,7 @@ function AddActivityPage(props: AddActivityPageProps): JSX.Element {
   return (
     <div>
       <h1>Add Activity</h1>
-      <Link to="/admin">Back to Admin</Link>
+      <Link to="/admin" className="admin-btn">Back to Admin</Link>
 
       {/* Renders AddActivityForm and sends with the onAdd */}
       <AddActivityForm onAddActivity={onAddActivity} activities={activities} setActivities={setActivities}  />

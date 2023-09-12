@@ -14,8 +14,9 @@ function LoginPage(props:LoginPageProps){
     return(
        <div className="login-form">
         <LoginForm onLogin={onLogin}/>
-
-        <h2 className="quote">"We help you to stay STRONG"</h2>
+            <div className="quote">
+                <h2>"We help you to stay STRONG"</h2>
+            </div>
         </div>
     )
 }

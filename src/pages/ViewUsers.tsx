@@ -1,5 +1,8 @@
 import Header from "../components/Header";
 import { User } from "../types/User";
+import { Link } from "react-router-dom";
+import "../stylesheet/components/_FakeBtn.scss"
+
 
 interface ViewUsersProps{
     users:User[] 
@@ -23,6 +26,7 @@ return(
     </li>
 ))}
 </ul>
+<Link to="/admin" className="admin-btn">Back to Admin</Link>
 </>
 )}
 
