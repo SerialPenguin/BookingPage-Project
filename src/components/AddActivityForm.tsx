@@ -72,7 +72,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
           onChange={(e) => setMaxCount(e.target.value)}
         />
       </label>
-      <button type="submit">Add Activity</button>
+      <button type="submit" className='login-btn'>Add Activity</button>
     </form>
     </div>
   );
