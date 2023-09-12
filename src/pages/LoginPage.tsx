@@ -12,10 +12,10 @@ onLogin:(id:number,username:string,role:UserRole,activities:Activity[],password:
 function LoginPage(props:LoginPageProps){
     const {onLogin} = props;
     return(
-       <div>
+       <div className="login-form">
         <LoginForm onLogin={onLogin}/>
 
-        <h2>"We help you to stay STRONG"</h2>
+        <h2 className="quote">"We help you to stay STRONG"</h2>
         </div>
     )
 }

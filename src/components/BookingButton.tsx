@@ -70,5 +70,3 @@ function BookingButton({ activity, updateUserActivities, loggedInUser, upDateAct
 }
 
 export default BookingButton;
-
-
