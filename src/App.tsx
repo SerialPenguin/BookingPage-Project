@@ -69,15 +69,19 @@ function App() {
   }
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem("loggedInUser");
-    if (storedUserData) {
-      const user = JSON.parse(storedUserData);
-      console.log(user)
-      const newUser: User = convertUser( user.id,user.username, user.role,user.activities,user.password)
-      setIsLoggedIn(true);
-      setLoggedInUser(newUser);
+    let hasFetchedUserData = false; // A flag to track whether user data has been fetched
+    
+    if (!hasFetchedUserData) {
+      const storedUserData = localStorage.getItem("loggedInUser");
+      if (storedUserData) {
+        const user = JSON.parse(storedUserData);
+        console.log(user);
+        const newUser: User = convertUser(user.id, user.username, user.role, user.activities, user.password);
+        setIsLoggedIn(true);
+        setLoggedInUser(newUser);
+      }
+      hasFetchedUserData = true; // Set the flag to true after the initial fetch
     }
-    console.log(loggedInUser);
   }, []);
 function convertUser(id:number,username:string,role:UserRole, activities:Activity[],password:string):User{
   const newUser: User = {
