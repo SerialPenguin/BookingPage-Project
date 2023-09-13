@@ -5,7 +5,6 @@ export interface Activity{
     title:string;
     content:string;
     date:Date;
-    
-	maxCount: number;	
+    maxCount: number;	
     
 }

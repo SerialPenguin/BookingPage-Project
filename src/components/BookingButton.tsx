@@ -15,12 +15,14 @@ interface BookingButtonProps {
 function BookingButton({ activity, updateUserActivities, loggedInUser, upDateActivityMaxCount }: BookingButtonProps) {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
-  function showBookingConfirmation() {
+  function showBookingConfirmation(): boolean {
     setBookingConfirmed(true);
+    return true;
   }
 
-  function hideBookingConfirmation() {
+  function hideBookingConfirmation(): boolean {
     setBookingConfirmed(false);
+    return false;
   }
 
   function handleBookActivity() {
