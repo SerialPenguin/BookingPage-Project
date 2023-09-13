@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserRole } from "../types/User";
 import "../stylesheet/pages/_LoginPage.scss"
+import "../stylesheet/components/_BookingButton.scss";
+
 
 interface LoginFormProps {
   onLogin: (
@@ -51,27 +53,38 @@ function LoginForm(props: LoginFormProps): JSX.Element {
         setError('Invalid username or password');
       });
   }
-  
+
+  function handleClearError(): void {
+    setError(''); // Clears the error message
+  }
 
   return (
     <div className="login-form-wrapper">
-      {error && <div className="error-message">{error}</div>}
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" className="login-btn">Log in!</button>
-    </form>
-    
+      <form onSubmit={handleSubmit}>
+        {error && (
+          <div className="booking-confirmation error-message">
+            <p>{error}</p>
+            <button type="button" onClick={handleClearError} className="booking-btn">
+              Try Again
+            </button>
+          </div>
+        )}
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" className="login-btn">
+          Log in!
+        </button>
+      </form>
     </div>
   );
 }

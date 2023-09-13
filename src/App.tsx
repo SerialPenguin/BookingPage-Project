@@ -116,22 +116,44 @@ function convertUser(id:number,username:string,role:UserRole, activities:Activit
     setLoggedInUser({ ...loggedInUser, activities: updatedActivities });
   }
 
-   // Function to remove an activity from the users list of activities
-   function handleRemoveActivity(activityId: number) {
-    // Create a copy of the users actual activity list
+  function handleRemoveActivity(activityId: number) {
+    // Create a copy of the users' actual activity list
     const updatedActivities = [...loggedInUser.activities];
-
+  
     // Find the index for the activity that's to be removed
     const indexToRemove = updatedActivities.findIndex((activity) => activity.id === activityId);
-
+  
     // Remove the activity if found
     if (indexToRemove !== -1) {
+      // Increment the maxCount for the removed activity
+      const removedActivity = updatedActivities[indexToRemove];
+      const updatedMaxCount = removedActivity.maxCount + 1;
+  
+      // Remove the activity from the list
       updatedActivities.splice(indexToRemove, 1);
-
-      // Update the users activity list with the updated list
-      setLoggedInUser({ ...loggedInUser, activities: updatedActivities });
+  
+      // Update the users' activity list and the maxCount
+      setLoggedInUser({
+        ...loggedInUser,
+        activities: updatedActivities,
+      });
+  
+      // Increment the maxCount for the removed activity in the main activities list
+      const updatedMainActivities = activities.map((activity) => {
+        if (activity.id === activityId) {
+          return {
+            ...activity,
+            maxCount: updatedMaxCount,
+          };
+        }
+        return activity;
+      });
+  
+      // Update the main activities list
+      setActivities(updatedMainActivities);
     }
   }
+  
 
   return (
     <div className="App">

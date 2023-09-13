@@ -9,7 +9,7 @@ interface PageBannerProps{
     password:string;
 
     handleRemoveActivity:(activityId: number) => void;
-
+    handleIncrementMaxCount?: (activityId: number) => void;
 }
 
 // Maps through users and booked activities and renders it on the page banner using the page banner props as the type declaration
@@ -28,7 +28,7 @@ export default function PageBanner(props:PageBannerProps):JSX.Element{
                         <p>{activity.title}</p>
                         <p>{activity.content}</p>
                         
-                        <p>{activity.maxCount}</p>
+                        <p>Participants: {activity.maxCount}</p>
                          <p>{activity.date.toLocaleString()}</p>
                          <button onClick={() => props.handleRemoveActivity(activity.id)} className="login-btn">Cancel Activity</button>
                     </li>
