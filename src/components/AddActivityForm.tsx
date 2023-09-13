@@ -14,7 +14,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [date, setDate] = useState<Date>(new Date());
-  const [maxCount, setMaxCount] = useState('');
+  const [maxCount, setMaxCount] = useState<number>(0);
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -24,7 +24,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
       title,
       content,
       date,
-      maxCount: parseInt(maxCount, 10),
+      maxCount,
     };
   
     // Use the local states
@@ -34,7 +34,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
     setTitle('');
     setContent('');
     setDate(new Date());
-    setMaxCount('');
+    setMaxCount(0);
   }
   
 
@@ -69,7 +69,7 @@ function AddActivityForm(props: AddActivityFormProps) { // Sets states for the i
         <input
           type="number"
           value={maxCount}
-          onChange={(e) => setMaxCount(e.target.value)}
+          onChange={(e) => setMaxCount(parseInt(e.target.value, 10))}
         />
       </label>
       <button type="submit" className='login-btn'>Add Activity</button>
