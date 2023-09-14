@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bookingpage-typescript/static/css/main.ef8a5680.css",
+    "main.js": "/bookingpage-typescript/static/js/main.296b4e57.js",
+    "index.html": "/bookingpage-typescript/index.html",
+    "main.ef8a5680.css.map": "/bookingpage-typescript/static/css/main.ef8a5680.css.map",
+    "main.296b4e57.js.map": "/bookingpage-typescript/static/js/main.296b4e57.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef8a5680.css",
+    "static/js/main.296b4e57.js"
+  ]
+}
