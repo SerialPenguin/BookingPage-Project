@@ -11,6 +11,10 @@ interface BookingButtonProps {
   upDateActivityMaxCount:(activityId: number) => void;
 }
 
+// The interface for BookingButtonProps wouldn't be needed with regular js
+// You just define an object without type annotations
+// The Activity interface doesn't have to be created as a type, nor imported
+
   // Logic for updating the logged in users activities when booking an activity
 function BookingButton({ activity, updateUserActivities, loggedInUser, upDateActivityMaxCount }: BookingButtonProps) {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
@@ -19,6 +23,9 @@ function BookingButton({ activity, updateUserActivities, loggedInUser, upDateAct
     setBookingConfirmed(true);
     return true;
   }
+
+  // The return true/false and stating that these functions are boolean
+  // wouldn't have to be used if using javascript
 
   function hideBookingConfirmation(): boolean {
     setBookingConfirmed(false);
